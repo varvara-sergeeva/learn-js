@@ -1,0 +1,18 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.menu__item {
+  list-style: none;
+}
+
+.menu__item > a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu__item > a:hover {
+  border-bottom: 2px solid black;
+}
