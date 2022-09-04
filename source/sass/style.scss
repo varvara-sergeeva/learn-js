@@ -1,0 +1,13 @@
+//Добавление сетки Bootstrap
+@import "functions";
+@import "variables";
+@import "mixins/breakpoints";
+@import "mixins/container";
+@import "mixins/grid";
+//Добавление глобальных стилей
+@import "global/font.scss";
+@import "global/grid.scss";
+@import "global/variables.scss";
+@import "global/mixin.scss";
+//Блоки странички
+@import "blocks/page.scss";

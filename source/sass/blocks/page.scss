@@ -1,0 +1,636 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+.container {
+  @include make-container();
+  @include make-max-width-container();
+}
+
+.block {
+  background-color: hsl(0, 1%, 74%);
+  border: 1px solid rgb(124, 121, 121);
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+}
+
+.grid-row {
+  @include make-row();
+  --bs-gutter-y: 1rem;
+
+  & > * {
+    @include make-col-ready();
+  }
+}
+
+.header {
+  @extend .grid-row;
+  min-height: 90px;
+  margin-bottom: 30px;
+
+  &__logo {
+    @include make-col(6);
+  }
+
+  &__nav {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 40px;
+
+    &__logo {
+      @include make-col(2);
+    }
+
+    &__nav {
+      @include make-col(10);
+    }
+  }
+
+  @media (min-width: $tablet) {
+    margin-bottom: 50px;
+  }
+}
+
+.promo {
+  @extend .grid-row;
+  min-height: 660px;
+  margin-bottom: 163px;
+
+  @media (min-width: $mobile) {
+    margin-bottom: 210px;
+  }
+
+  @media (min-width: $tablet) {
+    margin-bottom: 177px;
+  }
+
+  @include media-breakpoint-up(md) {
+    &__item {
+      @include make-col(6);
+    }
+  }
+
+  @media (min-width: $desktop) {
+    margin-bottom: 278px;
+  }
+}
+
+.test-checkbox {
+  padding-top: 30px;
+  background: rgb(193, 227, 182);
+}
+
+//!   CHECKED - CHECKED CHECKED - CHECKED CHECKED - CHECKED CHECKED - CHECKED
+
+.checkbox__form {
+  font-weight: 400;
+  max-width: 350px;
+  min-height: 150px;
+
+  @media (min-width: $mobile) {
+    max-width: 180px;
+    min-height: 90px;
+  }
+}
+
+.checkbox__form input {
+  appearance: none;
+  position: relative;
+}
+
+.checkbox__form input::before {
+  content: "";
+  width: 99px;
+  height: 99px;
+  border-radius: 50%;
+  background: linear-gradient(109deg, rgba(201, 201, 201, 0.8) 1.57%, rgba(196, 196, 196, 0.1) 100%);
+  backdrop-filter: blur(50px);
+  position: absolute;
+  top: -24px;
+  left: -200px;
+  transition: all 0.06 ease;
+
+  @media (min-width: $mobile) {
+    width: 42px;
+    height: 42px;
+    left: -98px;
+    top: -4px;
+  }
+}
+
+.checkbox__form input:checked::before {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.checkbox__form label {
+  position: relative;
+  width: 51px;
+  height: 25px;
+  background: rgb(238, 239, 243);
+  box-shadow: -1px 2px 6px rgb(87, 95, 107);
+  border-radius: 40px;
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+
+  @media (min-width: $mobile) {
+    width: 24px;
+    height: 12px;
+  }
+}
+
+.checkbox__form input:checked + label {
+  background: linear-gradient(90deg, rgb(221, 242, 71) -2.5%, rgb(221, 242, 71) 100%);
+}
+
+.checkbox__form label::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(310.59deg, rgb(242, 244, 247) 4%, rgb(229, 230, 236) 120%);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), -1px -1px 6px rgb(255, 255, 255);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: all 0.2s ease;
+
+  @media (min-width: $mobile) {
+    width: 8px;
+    height: 8px;
+    top: 2px;
+    left: 3px;
+  }
+}
+
+.checkbox__form input:checked + label::after {
+  left: calc(100% - 24px);
+  box-shadow: 2px 2px 6px rgba(36, 65, 93, 0.3), -1px -1px 6px rgb(255, 255, 255);
+
+  @media (min-width: $mobile) {
+    left: calc(100% - 11px);
+  }
+}
+
+.checkbox-text {
+  display: inline-block;
+  max-width: 350px;
+  max-height: 1px;
+  overflow: hidden;
+  border-radius: 4px;
+  position: relative;
+  left: -60%;
+  top: -53px;
+  opacity: 0;
+  transition: all 0.2s ease;
+
+  @media (min-width: $mobile) {
+    max-width: auto;
+    top: -25px;
+  }
+}
+
+.checkbox-text p {
+  margin: 15px 0 0 0;
+  text-align: left;
+  font-size: 20px;
+  line-height: 27px;
+  color: rgb(0, 0, 0);
+
+  @media (min-width: $mobile) {
+    font-size: 10px;
+    line-height: 14px;
+    margin: 7px 0 0 0;
+  }
+}
+
+.checkbox__1 input:checked ~ .checkbox-text,
+.checkbox__2 input:checked ~ .checkbox-text,
+.checkbox__3 input:checked ~ .checkbox-text,
+.checkbox__4 input:checked ~ .checkbox-text {
+  min-height: 80px;
+  border-radius: 72px;
+  background: linear-gradient(309deg, rgb(242, 243, 246) -13%, rgb(229, 230, 236) 172%);
+  box-shadow: 3px 3px 20px rgba(36, 65, 93, 0.3), -4px -4px 20px rgb(255, 255, 255);
+  opacity: 1;
+  padding-left: 96px;
+  padding-right: 30px;
+
+  @media (min-width: $mobile) {
+    min-height: 38px;
+    padding-left: 44px;
+  }
+}
+
+.checkbox__1 input:checked ~ .checkbox-text {
+  left: -67px;
+
+  @media (min-width: $mobile) {
+    left: -27px;
+  }
+}
+
+.checkbox__2 input:checked ~ .checkbox-text {
+  left: -22px;
+  padding-right: 20px;
+
+  @media (min-width: $mobile) {
+    left: -8px;
+  }
+}
+
+.checkbox__3 input:checked ~ .checkbox-text {
+  left: -28px;
+
+  @media (min-width: $mobile) {
+    left: -13px;
+    padding-right: 20px;
+  }
+}
+
+.checkbox__4 input:checked ~ .checkbox-text {
+  left: -24px;
+
+  @media (min-width: $mobile) {
+    left: -15px;
+    padding-right: 10px;
+  }
+}
+
+//!   TIMELINE      TIMELINE      TIMELINE      TIMELINE      TIMELINE      TIMELINE      TIMELINE      TIMELINE
+
+.timeline__wrapper {
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+  padding: 50px 0;
+  margin: 50px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline__line {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  margin-left: -1px;
+  width: 2px;
+  height: 1%;
+  z-index: 1;
+  transition: all 5s ease 0s;
+}
+
+.timeline__line.active {
+  background-color: $colorBright;
+  height: 75%;
+}
+
+.active.timeline__wrapper::before {
+  background: rgb(235, 103, 95);
+}
+
+.timeline-block {
+  width: calc(50% + 8px);
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  //clear: both;
+}
+
+.timeline-block-right {
+  position: relative;
+  float: right;
+}
+
+//отодвигает от линии блоки справа
+.timeline-block-right > .timeline-content {
+  padding-left: 35px;
+}
+
+.timeline-block-left {
+  position: relative;
+  float: left;
+  direction: rtl;
+}
+
+.marker {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  border: 2px solid rgb(197, 197, 197);
+  background: rgb(197, 197, 197);
+  z-index: 9999;
+}
+
+.marker-left {
+  margin-right: -4px;
+}
+
+.marker--last {
+  margin-top: 40px;
+}
+
+.marker-right {
+  margin-left: -4px;
+}
+
+.timeline-content {
+  width: 95%;
+  color: rgb(102, 102, 102);
+}
+
+h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 48px;
+  line-height: 61px;
+  font-weight: 500;
+  color: hsl(0, 0%, 77%);
+  transition: all 2s ease 0s;
+}
+
+h3.active {
+  color: $colorBright;
+}
+
+
+//!   TIMELINE      TIMELINE      TIMELINE      TIMELINE      TIMELINE      TIMELINE      TIMELINE      TIMELINE
+
+//!   COMPARISON      COMPARISON      COMPARISON      COMPARISON      COMPARISON      COMPARISON      COMPARISON
+
+:root {
+  --comparison-container-widht: min(80vw, 1267px);
+}
+
+.comparison {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  //контейнер важен парамерт ширины
+  &__container {
+    position: relative;
+    width: var(--comparison-container-widht);
+    overflow: hidden;
+    border-radius: 27px;
+    box-shadow: 0 4px 28px 0 rgba(0, 0, 0, 0.25);
+    margin-bottom: 100px;
+    cursor: col-resize;
+    color: rgb(255, 255, 255);
+  }
+
+  //стилизация картинки первой - важна ширина, высота, адаптивность
+  &__container img {
+    display: block;
+    width: var(--comparison-container-widht);
+    max-height: 618px;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  //обёртка наложенной картинки - важно позиционирование справа, ширина, overflow, z-index
+  &__wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 60%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  // важна высота второй картинки
+  &__wrap img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  // z-index ставим, так как на врапере тоже он стоит
+  &__label {
+    position: absolute;
+    z-index: 3;
+    user-select: none;
+    color: rgb(255, 0, 0);
+  }
+
+  &__label--before {
+    top: 30px;
+    left: 1rem;
+  }
+
+  &__label--after {
+    bottom: 30px;
+    right: 1rem;
+  }
+}
+
+//важен z-index он будет слоем после картинки, но до надписи
+// left - задаёт где будет стоять изначально разделитель
+.handle {
+  position: absolute;
+  top: 0;
+  left: calc(40% - 19px);
+  width: 38px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  z-index: 2;
+
+  // важно flex-grow - линия занимает всё свободное пространство по основной оси флекса handle
+  &__line {
+    width: 4px;
+    flex-grow: 1;
+    background-color: rgb(255, 255, 255);
+  }
+
+  &__arrows {
+    width: 12px;
+    height: 81px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    position: relative;
+  }
+
+  &__arrow--before {
+    right: 8px;
+  }
+
+  &__arrow--after {
+    left: 8px;
+  }
+}
+
+//!   COMPARISON      COMPARISON      COMPARISON      COMPARISON      COMPARISON      COMPARISON      COMPARISON
+
+.skill {
+  @extend .grid-row;
+  min-height: 894px;
+  margin-bottom: 50px;
+
+  @media (min-width: $mobile) {
+    margin-bottom: 84px;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+
+    &__speaking {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+    }
+
+    &__writing {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+    }
+
+    &__reading {
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+    }
+
+    &__listening {
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
+    }
+  }
+
+  @media (min-width: $middle) {
+    margin-bottom: 52px;
+    grid-template: 60% 40% / 1fr 1fr 1fr;
+
+    &__speaking {
+      grid-row: 1 / 3;
+      grid-column: 1 / 2;
+    }
+
+    &__writing {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+    }
+
+    &__reading {
+      grid-row: 1 / 2;
+      grid-column: 3 / 4;
+    }
+
+    &__listening {
+      grid-row: 2 / 3;
+      grid-column: 2 / 4;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    margin-bottom: 106px;
+  }
+
+  @media (min-width: $desktop) {
+    margin-bottom: 250px;
+  }
+}
+
+.about-us {
+  @extend .grid-row;
+  min-height: 500px;
+  margin-bottom: 200px;
+
+  @media (min-width: $mobile) {
+    margin-bottom: 260px;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 200px;
+
+    &__item {
+      @include make-col(6);
+    }
+  }
+
+  @media (min-width: $desktop) {
+    margin-bottom: 325px;
+  }
+}
+
+.pricing {
+  @extend .grid-row;
+  min-height: 582px;
+  margin-bottom: 190px;
+
+  @media (min-width: $mobile) {
+    margin-bottom: 326px;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 101px;
+
+    &__item {
+      @include make-col(4);
+    }
+  }
+
+  @media (min-width: $tablet) {
+    margin-bottom: 140px;
+  }
+
+  @media (min-width: $desktop) {
+    margin-bottom: 260px;
+  }
+}
+
+.contact {
+  @extend .grid-row;
+  min-height: 430px;
+  margin-bottom: 133px;
+
+  @include media-breakpoint-up(md) {
+    &__img {
+      @include make-col(4);
+    }
+
+    &__form {
+      @include make-col(8);
+    }
+  }
+}
+
+.footer {
+  @extend .grid-row;
+
+  @include media-breakpoint-up(sm) {
+    &__logo {
+      @include make-col(3);
+    }
+
+    &__policy {
+      @include make-col(9);
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &__logo {
+      @include make-col(2);
+    }
+
+    &__policy {
+      @include make-col(10);
+    }
+  }
+}
